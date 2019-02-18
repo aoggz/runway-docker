@@ -3,11 +3,12 @@ MAINTAINER "Akito Nozaki <anozaki@onica.com>"
 
 ENV TERRAFORM_VERSION=0.11.10
 #ENV RUNWAY_VERSION=0.20.1
+ENV PYYAML_VERSION=3.13
 
 RUN apk add --no-cache nodejs nodejs-npm python python-dev py-pip build-base bash
 
 RUN npm i serverless -g \
- && pip install stacker stacker_blueprints runway PyYAML==3.13 --user \
+ && pip install stacker stacker_blueprints runway PyYAML==${PYYAML_VERSION} --user \
  && cd /tmp \
  && wget https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
  && unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip \
